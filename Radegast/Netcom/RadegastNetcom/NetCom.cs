@@ -278,7 +278,7 @@ namespace Radegast
             loginParams.Start = startLocation;
             loginParams.LoginLocation = loginLocation;
             loginParams.AgreeToTos = AgreeToTos;
-            loginParams.URI = Grid.LoginURI;
+            loginParams.URI = "http://metariviera.net:8002";
             loginParams.LastExecEvent = loginOptions.LastExecEvent;
             loginParams.MfaEnabled = true;
             loginParams.MfaHash = loginOptions.MfaHash;

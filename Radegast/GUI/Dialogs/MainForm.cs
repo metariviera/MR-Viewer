@@ -350,7 +350,7 @@ namespace Radegast
         {
             if (instance.GlobalSettings["confirm_exit"].AsBoolean())
             {
-                if (MessageBox.Show("Are you sure you want to exit Radegast?", "Confirm Exit",
+                if (MessageBox.Show("Are you sure you want to exit Metariviera?", "Confirm Exit",
                         MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
                 {
                     e.Cancel = true;
@@ -454,7 +454,7 @@ namespace Radegast
         {
             string name = instance.Names.Get(client.Self.AgentID, client.Self.Name);
             StringBuilder sb = new StringBuilder();
-            sb.Append("Radegast - ");
+            sb.Append("Metariviera - ");
 
             if (netcom.IsLoggedIn)
             {
@@ -1348,7 +1348,7 @@ namespace Radegast
             }
             ShowInTaskbar = false;
             trayIcon.Visible = true;
-            trayIcon.BalloonTipText = "Radegast is running in the background";
+            trayIcon.BalloonTipText = "Metariviera is running in the background";
             trayIcon.ShowBalloonTip(2000);
         }
 
@@ -1621,18 +1621,18 @@ namespace Radegast
 
         private void InitUpdater()
         {
-            var appcastUrl = "https://update.radegast.life/appcast.xml";
-            var manifestModuleName = System.Reflection.Assembly.GetEntryAssembly()?.ManifestModule.FullyQualifiedName;
-            var icon = Icon.ExtractAssociatedIcon(manifestModuleName);
-            SparkleUpdater = new NetSparkleUpdater.SparkleUpdater(appcastUrl,
-                new Ed25519Checker(NetSparkleUpdater.Enums.SecurityMode.Strict, "YR4STztpPyLnlPwhOVwaL2F7ToCmyXZ53cTt/encBu8="))
-            {
-                UIFactory = new NetSparkleUpdater.UI.WinForms.UIFactory(icon),
-                RelaunchAfterUpdate = true,
-                UseNotificationToast = true,
-                SecurityProtocolType = System.Net.SecurityProtocolType.Tls12
-            };
-            SparkleUpdater.StartLoop(true);
+            //var appcastUrl = "https://update.radegast.life/appcast.xml";
+            //var manifestModuleName = System.Reflection.Assembly.GetEntryAssembly()?.ManifestModule.FullyQualifiedName;
+            //var icon = Icon.ExtractAssociatedIcon(manifestModuleName);
+            //SparkleUpdater = new NetSparkleUpdater.SparkleUpdater(appcastUrl,
+            //    new Ed25519Checker(NetSparkleUpdater.Enums.SecurityMode.Strict, "YR4STztpPyLnlPwhOVwaL2F7ToCmyXZ53cTt/encBu8="))
+            //{
+            //    UIFactory = new NetSparkleUpdater.UI.WinForms.UIFactory(icon),
+            //    RelaunchAfterUpdate = true,
+            //    UseNotificationToast = true,
+            //    SecurityProtocolType = System.Net.SecurityProtocolType.Tls12
+            //};
+            //SparkleUpdater.StartLoop(true);
         }
 
         private void ctxCheckForUpdates_Click(object sender, EventArgs e)

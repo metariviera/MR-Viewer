@@ -249,10 +249,10 @@ namespace Radegast
             }
 
             // opensim grids need extra push
-            if (Instance.Netcom.Grid.Platform == "OpenSim")
-            {
+            //if (Instance.Netcom.Grid.Platform == "OpenSim")
+            //{
                 Client.Grid.RequestMapLayer(GridLayerType.Objects);
-            }
+            //}
             SafeInvalidate();
         }
 

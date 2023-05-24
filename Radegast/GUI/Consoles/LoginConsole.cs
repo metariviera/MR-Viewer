@@ -44,7 +44,7 @@ namespace Radegast
             AddNetcomEvents();
 
             pnlSplash.BackgroundImage = instance.GlobalSettings["hide_login_graphics"].AsBoolean() 
-                ? null : Properties.Resources.radegast_main_screen2;
+                ? null : Properties.Resources.mainscreen;
 
             if (!instance.GlobalSettings.ContainsKey("remember_login"))
             {
@@ -53,8 +53,8 @@ namespace Radegast
 
             instance.GlobalSettings.OnSettingChanged += GlobalSettings_OnSettingChanged;
 
-            lblVersion.Text = $"{Properties.Resources.RadegastTitle} {Assembly.GetExecutingAssembly().GetName().Version}\n" +
-                              $"{RuntimeInformation.FrameworkDescription}";
+            //lblVersion.Text = $"{Properties.Resources.RadegastTitle} {Assembly.GetExecutingAssembly().GetName().Version}\n" +
+            //                  $"{RuntimeInformation.FrameworkDescription}";
 
             Load += LoginConsole_Load;
 
@@ -102,7 +102,7 @@ namespace Radegast
             if (e.Key == "hide_login_graphics")
             {
                 pnlSplash.BackgroundImage = e.Value.AsBoolean() 
-                    ? null : Properties.Resources.radegast_main_screen2;
+                    ? null : Properties.Resources.mainscreen;
             }
         }
 
@@ -113,22 +113,23 @@ namespace Radegast
 
             var username = cbxUsername.Text;
             var passTxt = txtPassword.Text;
+            savedLogin.GridID = "http://metariviera.net:8002";
 
             if (cbxUsername.SelectedIndex > 0 && cbxUsername.SelectedItem is SavedLogin login)
             {
                 username = login.Username;
             }
 
-            if (cbxGrid.SelectedIndex == cbxGrid.Items.Count - 1) // custom login uri
-            {
-                savedLogin.GridID = "custom_login_uri";
-                savedLogin.CustomURI = txtCustomLoginUri.Text;
-            }
-            else
-            {
-                savedLogin.GridID = (cbxGrid.SelectedItem as Grid)?.ID;
-                savedLogin.CustomURI = string.Empty;
-            }
+            //if (cbxGrid.SelectedIndex == cbxGrid.Items.Count - 1) // custom login uri
+            //{
+            //    savedLogin.GridID = "custom_login_uri";
+            //    savedLogin.CustomURI = txtCustomLoginUri.Text;
+            //}
+            //else
+            //{
+            //    savedLogin.GridID = (cbxGrid.SelectedItem as Grid)?.ID;
+            //    savedLogin.CustomURI = string.Empty;
+            //}
 
             var savedLoginsKey = $"{username}%{savedLogin.GridID}";
 
@@ -177,8 +178,8 @@ namespace Radegast
             globalSettings["login_location"] = OSD.FromString(cbxLocation.Text);
 
             globalSettings["login_grid"] = OSD.FromString(savedLogin.GridID);
-            globalSettings["login_grid_idx"] = OSD.FromInteger(cbxGrid.SelectedIndex);
-            globalSettings["login_uri"] = OSD.FromString(txtCustomLoginUri.Text);
+            //globalSettings["login_grid_idx"] = OSD.FromInteger(cbxGrid.SelectedIndex);
+            //globalSettings["login_uri"] = OSD.FromString(txtCustomLoginUri.Text);
             globalSettings["remember_login"] = cbRemember.Checked;
         }
 
@@ -194,19 +195,19 @@ namespace Radegast
             // Initialize grid dropdown
             var gridIx = -1;
 
-            cbxGrid.Items.Clear();
-            for (var i = 0; i < instance.GridManger.Count; i++)
-            {
-                cbxGrid.Items.Add(instance.GridManger[i]);
-                if (MainProgram.s_CommandLineOpts.Grid == instance.GridManger[i].ID)
-                    gridIx = i;
-            }
-            cbxGrid.Items.Add("Custom");
+            //cbxGrid.Items.Clear();
+            //for (var i = 0; i < instance.GridManger.Count; i++)
+            //{
+            //    cbxGrid.Items.Add(instance.GridManger[i]);
+            //    if (MainProgram.s_CommandLineOpts.Grid == instance.GridManger[i].ID)
+            //        gridIx = i;
+            //}
+            //cbxGrid.Items.Add("Custom");
 
-            if (gridIx != -1)
-            {
-                cbxGrid.SelectedIndex = gridIx;
-            }
+            //if (gridIx != -1)
+            //{
+            //    cbxGrid.SelectedIndex = gridIx;
+            //}
 
 
             Settings s = instance.GlobalSettings;
@@ -288,29 +289,29 @@ namespace Radegast
 
 
             // Set grid dropdown to last used, or override from command line
-            if (string.IsNullOrEmpty(MainProgram.s_CommandLineOpts.Grid))
-            {
-                cbxGrid.SelectedIndex = s["login_grid_idx"].AsInteger();
-            }
-            else if (gridIx == -1) // --grid specified but not found
-            {
-                MessageBox.Show($"Grid specified with --grid {MainProgram.s_CommandLineOpts.Grid} not found",
-                    "Grid not found",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning
-                    );
-            }
+            //if (string.IsNullOrEmpty(MainProgram.s_CommandLineOpts.Grid))
+            //{
+            //    cbxGrid.SelectedIndex = s["login_grid_idx"].AsInteger();
+            //}
+            //else if (gridIx == -1) // --grid specified but not found
+            //{
+            //    MessageBox.Show($"Grid specified with --grid {MainProgram.s_CommandLineOpts.Grid} not found",
+            //        "Grid not found",
+            //        MessageBoxButtons.OK,
+            //        MessageBoxIcon.Warning
+            //        );
+            //}
 
             // Restore login uri from settings, or command line
-            if (string.IsNullOrEmpty(MainProgram.s_CommandLineOpts.LoginUri))
-            {
-                txtCustomLoginUri.Text = s["login_uri"].AsString();
-            }
-            else
-            {
-                txtCustomLoginUri.Text = MainProgram.s_CommandLineOpts.LoginUri;
-                cbxGrid.SelectedIndex = cbxGrid.Items.Count - 1;
-            }
+            //if (string.IsNullOrEmpty(MainProgram.s_CommandLineOpts.LoginUri))
+            //{
+            //    txtCustomLoginUri.Text = s["login_uri"].AsString();
+            //}
+            //else
+            //{
+            //    txtCustomLoginUri.Text = MainProgram.s_CommandLineOpts.LoginUri;
+            //    cbxGrid.SelectedIndex = cbxGrid.Items.Count - 1;
+            //}
 
             // Start logging in if autologin enabled from command line
             if (MainProgram.s_CommandLineOpts.AutoLogin)
@@ -488,35 +489,35 @@ namespace Radegast
                     break;
             }
 
-            if (cbxGrid.SelectedIndex == cbxGrid.Items.Count - 1) // custom login uri
-            {
-                if (txtCustomLoginUri.TextLength == 0 || txtCustomLoginUri.Text.Trim().Length == 0)
-                {
-                    MessageBox.Show("You must specify the Login Uri to connect to a custom grid.", 
-                        Properties.Resources.ProgramName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+            //if (cbxGrid.SelectedIndex == cbxGrid.Items.Count - 1) // custom login uri
+            //{
+            //    if (txtCustomLoginUri.TextLength == 0 || txtCustomLoginUri.Text.Trim().Length == 0)
+            //    {
+            //        MessageBox.Show("You must specify the Login Uri to connect to a custom grid.", 
+            //            Properties.Resources.ProgramName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //        return;
+            //    }
 
-                netcom.LoginOptions.Grid = new Grid("custom", "Custom", txtCustomLoginUri.Text);
-                netcom.LoginOptions.GridCustomLoginUri = txtCustomLoginUri.Text;
-            }
-            else
-            {
-                netcom.LoginOptions.Grid = cbxGrid.SelectedItem as Grid;
-            }
+            //    netcom.LoginOptions.Grid = new Grid("custom", "Custom", txtCustomLoginUri.Text);
+            //    netcom.LoginOptions.GridCustomLoginUri = txtCustomLoginUri.Text;
+            //}
+            //else
+            //{
+            //    netcom.LoginOptions.Grid = cbxGrid.SelectedItem as Grid;
+            //}
 
-            if (instance.GlobalSettings.ContainsKey("saved_logins"))
-            {
-                var logins = (OSDMap)instance.GlobalSettings["saved_logins"];
-                var gridId = cbxGrid.SelectedIndex == cbxGrid.Items.Count - 1 
-                    ? "custom_login_uri" : (cbxGrid.SelectedItem as Grid)?.ID;
-                var savedLoginsKey = $"{username}%{gridId}";
-                if (logins.ContainsKey(savedLoginsKey))
-                {
-                    var sl = SavedLogin.FromOSD(logins[savedLoginsKey]);
-                    netcom.LoginOptions.MfaHash = sl.MfaHash;
-                }
-            }
+            //if (instance.GlobalSettings.ContainsKey("saved_logins"))
+            //{
+            //    var logins = (OSDMap)instance.GlobalSettings["saved_logins"];
+            //    //var gridId = cbxGrid.SelectedIndex == cbxGrid.Items.Count - 1 
+            //    //    ? "custom_login_uri" : (cbxGrid.SelectedItem as Grid)?.ID;
+            //    //var savedLoginsKey = $"{username}%{gridId}";
+            //    if (logins.ContainsKey(savedLoginsKey))
+            //    {
+            //        var sl = SavedLogin.FromOSD(logins[savedLoginsKey]);
+            //        netcom.LoginOptions.MfaHash = sl.MfaHash;
+            //    }
+            //}
 
             netcom.Login();
             SaveConfig();
@@ -546,18 +547,18 @@ namespace Radegast
 
         #endregion
 
-        private void cbxGrid_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbxGrid.SelectedIndex == cbxGrid.Items.Count - 1) //Custom option is selected
-            {
-                txtCustomLoginUri.Enabled = true;
-                txtCustomLoginUri.Select();
-            }
-            else
-            {
-                txtCustomLoginUri.Enabled = false;
-            }
-        }
+        //private void cbxGrid_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    if (cbxGrid.SelectedIndex == cbxGrid.Items.Count - 1) //Custom option is selected
+        //    {
+        //        txtCustomLoginUri.Enabled = true;
+        //        txtCustomLoginUri.Select();
+        //    }
+        //    else
+        //    {
+        //        txtCustomLoginUri.Enabled = false;
+        //    }
+        //}
 
         private void cbTOS_CheckedChanged(object sender, EventArgs e)
         {
@@ -589,22 +590,22 @@ namespace Radegast
                 {
                     cbxLocation.Text = savedLogin.CustomStartLocation;
                 }
-                if (savedLogin.GridID == "custom_login_uri")
-                {
-                    cbxGrid.SelectedIndex = cbxGrid.Items.Count - 1;
-                    txtCustomLoginUri.Text = savedLogin.CustomURI;
-                }
-                else
-                {
-                    foreach (var item in cbxGrid.Items)
-                    {
-                        if (item is Grid grid && grid.ID == savedLogin.GridID)
-                        {
-                            cbxGrid.SelectedItem = grid;
-                            break;
-                        }
-                    }
-                }
+                //if (savedLogin.GridID == "custom_login_uri")
+                //{
+                //    cbxGrid.SelectedIndex = cbxGrid.Items.Count - 1;
+                //    txtCustomLoginUri.Text = savedLogin.CustomURI;
+                //}
+                //else
+                //{
+                //    foreach (var item in cbxGrid.Items)
+                //    {
+                //        if (item is Grid grid && grid.ID == savedLogin.GridID)
+                //        {
+                //            cbxGrid.SelectedItem = grid;
+                //            break;
+                //        }
+                //    }
+                //}
             }
 
             cbxUsername.SelectedIndexChanged += cbxUsername_SelectedIndexChanged;

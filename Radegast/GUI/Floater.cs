@@ -130,6 +130,24 @@ namespace Radegast
             }
         }
 
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // Floater
+            // 
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Name = "Floater";
+            this.Load += new System.EventHandler(this.Floater_Load_1);
+            this.ResumeLayout(false);
+
+        }
+
+        private void Floater_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
         private void UpdatePos()
         {
             Rectangle mainRect = new Rectangle(new Point(mainLeft, mainTop), mainSize);

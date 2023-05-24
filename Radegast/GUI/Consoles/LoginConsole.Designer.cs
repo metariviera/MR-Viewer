@@ -60,10 +60,6 @@ namespace Radegast
         {
             this.pnlLoginPrompt = new System.Windows.Forms.Panel();
             this.cbRemember = new System.Windows.Forms.CheckBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtCustomLoginUri = new System.Windows.Forms.TextBox();
-            this.cbxGrid = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cbxUsername = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -75,7 +71,6 @@ namespace Radegast
             this.proLogin = new System.Windows.Forms.ProgressBar();
             this.lblLoginStatus = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lblVersion = new System.Windows.Forms.Label();
             this.pnlSplash = new System.Windows.Forms.Panel();
             this.pnlTos = new System.Windows.Forms.Panel();
             this.cbTOS = new System.Windows.Forms.CheckBox();
@@ -91,10 +86,6 @@ namespace Radegast
             // 
             this.pnlLoginPrompt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlLoginPrompt.Controls.Add(this.cbRemember);
-            this.pnlLoginPrompt.Controls.Add(this.label6);
-            this.pnlLoginPrompt.Controls.Add(this.txtCustomLoginUri);
-            this.pnlLoginPrompt.Controls.Add(this.cbxGrid);
-            this.pnlLoginPrompt.Controls.Add(this.label5);
             this.pnlLoginPrompt.Controls.Add(this.label1);
             this.pnlLoginPrompt.Controls.Add(this.cbxUsername);
             this.pnlLoginPrompt.Controls.Add(this.label2);
@@ -118,47 +109,6 @@ namespace Radegast
             this.cbRemember.Text = "Remember username and password";
             this.cbRemember.UseVisualStyleBackColor = true;
             this.cbRemember.CheckedChanged += new System.EventHandler(this.cbRemember_CheckedChanged);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label6.Location = new System.Drawing.Point(272, 73);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(48, 13);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "Login Uri";
-            // 
-            // txtCustomLoginUri
-            // 
-            this.txtCustomLoginUri.AccessibleName = "Login URL";
-            this.txtCustomLoginUri.Enabled = false;
-            this.txtCustomLoginUri.Location = new System.Drawing.Point(326, 70);
-            this.txtCustomLoginUri.Name = "txtCustomLoginUri";
-            this.txtCustomLoginUri.Size = new System.Drawing.Size(224, 21);
-            this.txtCustomLoginUri.TabIndex = 13;
-            // 
-            // cbxGrid
-            // 
-            this.cbxGrid.AccessibleName = "Grid";
-            this.cbxGrid.DropDownHeight = 300;
-            this.cbxGrid.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxGrid.IntegralHeight = false;
-            this.cbxGrid.Location = new System.Drawing.Point(56, 70);
-            this.cbxGrid.Name = "cbxGrid";
-            this.cbxGrid.Size = new System.Drawing.Size(210, 21);
-            this.cbxGrid.TabIndex = 12;
-            this.cbxGrid.SelectedIndexChanged += new System.EventHandler(this.cbxGrid_SelectedIndexChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label5.Location = new System.Drawing.Point(3, 73);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(26, 13);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Grid";
             // 
             // label1
             // 
@@ -267,7 +217,6 @@ namespace Radegast
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
-            this.panel1.Controls.Add(this.lblVersion);
             this.panel1.Controls.Add(this.pnlLoginPrompt);
             this.panel1.Controls.Add(this.btnLogin);
             this.panel1.Controls.Add(this.pnlLoggingIn);
@@ -276,15 +225,6 @@ namespace Radegast
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(682, 97);
             this.panel1.TabIndex = 18;
-            // 
-            // lblVersion
-            // 
-            this.lblVersion.AutoSize = true;
-            this.lblVersion.Location = new System.Drawing.Point(3, 3);
-            this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Size = new System.Drawing.Size(94, 39);
-            this.lblVersion.TabIndex = 18;
-            this.lblVersion.Text = "Radegast 2.0.000\r\n.NET 4.8\r\nWindows 10\r\n";
             // 
             // pnlSplash
             // 
@@ -344,7 +284,6 @@ namespace Radegast
             this.pnlLoginPrompt.PerformLayout();
             this.pnlLoggingIn.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.pnlSplash.ResumeLayout(false);
             this.pnlTos.ResumeLayout(false);
             this.pnlTos.PerformLayout();
@@ -365,16 +304,11 @@ namespace Radegast
         public System.Windows.Forms.Panel pnlLoggingIn;
         public System.Windows.Forms.Label lblLoginStatus;
         public System.Windows.Forms.ProgressBar proLogin;
-        public System.Windows.Forms.ComboBox cbxGrid;
-        public System.Windows.Forms.Label label5;
-        public System.Windows.Forms.TextBox txtCustomLoginUri;
-        public System.Windows.Forms.Label label6;
         public System.Windows.Forms.Panel panel1;
         public System.Windows.Forms.Panel pnlSplash;
         public System.Windows.Forms.Panel pnlTos;
         public System.Windows.Forms.TextBox txtTOS;
         public System.Windows.Forms.CheckBox cbTOS;
-        public System.Windows.Forms.Label lblVersion;
         public System.Windows.Forms.CheckBox cbRemember;
 
     }

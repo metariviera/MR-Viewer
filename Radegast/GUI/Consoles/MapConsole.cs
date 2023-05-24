@@ -94,10 +94,10 @@ namespace Radegast
 
                 mmap.ZoomChanged += mmap_ZoomChaged;
 
-                if (instance.Netcom.Grid.ID == "agni")
-                {
-                    mmap.UseExternalTiles = true;
-                }
+                //if (instance.Netcom.Grid.ID == "agni")
+                //{
+                //    mmap.UseExternalTiles = true;
+                //}
                 mmap.Dock = DockStyle.Fill;
                 pnlMap.Controls.Add(mmap);
                 mmap_ZoomChaged(null, null);
