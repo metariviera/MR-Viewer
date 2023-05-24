@@ -1,4 +1,4 @@
-Foork of Radegast Metaverse Client (http://radegast.life/)
+Fork of Radegast Metaverse Client (http://radegast.life/)
 
 [![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](https://github.com/cinderblocks/radegast/blob/master/LICENSE.txt)
 [![Latest version downloads](https://img.shields.io/github/downloads-pre/cinderblocks/radegast/latest/total)](https://radegast.life/downloads/)  
