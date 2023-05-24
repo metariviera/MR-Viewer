@@ -55,6 +55,12 @@ Pull requests are nice. Try not to be a dick, and we will all get along just fin
 
 ## Acknowledgments
 
+Based on Radegast Metaverse Client 
+http://radegast.life/
+Copyright © 2009-2018, Radegast Development Team
+Copyright © 2017-2022, Sjofn, LLC.
+All rights reserved.
+
 Based on SLeek
 Copyright © 2006-2008, Paul Clement (a.k.a. Delta)
 All rights reserved.
